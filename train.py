@@ -137,7 +137,7 @@ def train(model_type, logdir, batch_size, iterations, validation_interval, seque
             Path(logdir) / f'model-{step}.pt')
     del dataset, valid_dataset
     
-    test_dataset = MAESTRO_small(groups=['test'], hop_size=HOP_SIZE, random_sample=False)
+    test_dataset = MAESTRO_small(groups=['test'], hop_size=HOP_SIZE, sequence_length=sequence_length, random_sample=False)
     model.eval()
     with th.no_grad():
         loader = DataLoader(test_dataset, batch_size=1, shuffle=False)
